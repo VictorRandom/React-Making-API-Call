@@ -2,19 +2,13 @@ import React, { useState, useEffect } from "react"
 
 export default function App() {
     const [starWarsData, setStarWarsData] = useState({});
-    const [count, setCount] = useState(0);
-    
-    // side effects
-    // useEffect(function(){
-    //   console.log("Component rendered")
-      
-    //   fetch("https://swapi.dev/api/people/1")
-    //       .then(res => res.json())
-    //       .then(data => setStarWarsData(data))
-    // }, [])
-    
+    const [count, setCount] = useState(1);    
 
     useEffect(() => {
+
+      fetch(`https://swapi.dev/api/people/${count}`)
+          .then(res => res.json())
+          .then(data => setStarWarsData(data))
       console.log("Effect function ran");
     }, [count])
 
